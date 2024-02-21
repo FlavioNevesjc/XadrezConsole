@@ -5,20 +5,26 @@ using xadrez;
 namespace xadrez_console {
     internal class Program {
         private static void Main(string[] args) {
-                        try {
+            try {
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                        Tabuleiro tab = new Tabuleiro(8,8);
-                        tab.colocarPeca(new Torre(tab,Cor.Preta),new Posicao(0,0));
-                        tab.colocarPeca(new Torre(tab,Cor.Preta),new Posicao(1,3));
-                        tab.colocarPeca(new Rei(tab,Cor.Preta),new Posicao(0,6));
-                        tab.colocarPeca(new Rei(tab,Cor.Branca),new Posicao(0,4));
+                while (!partida.terminada) {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
+                    
+                    Console.Write("\nOrigem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
 
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                        Tela.imprimirTabuleiro(tab);
-                        }
-                        catch (Exception e) {
-                            Console.WriteLine(e.Message);
-                        }
+                    partida.executaMovimento(origem, destino);
+                }
+
+                }
+                catch (Exception e) {
+                    Console.WriteLine(e.Message);
+                }
             
 /*            PosicaoXadrez pos = new PosicaoXadrez('c',7);
             Console.WriteLine(pos);
