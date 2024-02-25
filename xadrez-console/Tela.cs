@@ -78,7 +78,6 @@ namespace xadrez_console {
             Console.BackgroundColor = fundoOriginal;
         }
 
-
         public static PosicaoXadrez lerPosicaoXadrez() {
             string s = Console.ReadLine();
             char coluna = s[0];
